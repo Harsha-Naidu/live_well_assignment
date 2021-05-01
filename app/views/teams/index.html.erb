@@ -1,0 +1,52 @@
+<div class="container">
+
+<div class='container-fluid'>
+    <div style="float:left">
+        <nav class="navbar navbar-expand navbar-black justify-content-between">
+            <ul class="navbar-nav ml-auto">
+          
+                <li class="nav-item active mr-4">
+                   <h4> <%= link_to 'Home', root_path  %></h4>
+                </li>
+                >
+                <li class="nav-item mr-3">
+                   <h4><%= link_to 'Teams', teams_path %><h4>
+                </li>
+            </ul>
+    </div>
+</div>
+<div class="container">
+    <div style="float:left">
+       <h1><%= @team_count %> Teams</h1>
+    </div>
+    <div style="float:right">
+        <%= link_to("New",new_team_path, class:"btn btn-success")%>
+        <span>
+            <button type="button" class="btn btn-danger"><h4><b>Reset to Default</b></h4></button>
+        </span> 
+    </div>  
+</div>
+<br/>
+    <table class="table table-striped" cellspacing="0" width="100%">
+    <thead>
+      <tr class="table-primary">
+        <th>Name</th>
+        <th>Hometown</th>
+        <th>Formed</th>
+        <th>Active</th>
+        <th>Members</th>   
+        <th></th>
+      </tr>
+    </thead>
+    <% @teams.each do |team|%>  
+        <tbody>
+        <tr> 
+            <td><%= link_to(team.name, team_path(team.id))%></td>
+            <td><%= team.home_town %></td>
+            <td><%= team.formed %></td>
+            <td><%= team.active %></td>
+        </tr>
+        </tbody>
+    <% end %>
+  </table>
+</div>
