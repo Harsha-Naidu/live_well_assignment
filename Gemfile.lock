@@ -85,6 +85,7 @@ GEM
     cowsay (0.3.0)
     crass (1.0.6)
     erubi (1.10.0)
+    excon (0.79.0)
     execjs (2.7.0)
     ffi (1.15.0)
     globalid (0.4.2)
@@ -200,6 +201,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 3.2, >= 3.2.1)
   cowsay (~> 0.3.0)
+  excon
   faker!
   jbuilder (~> 2.7)
   listen (~> 3.3)

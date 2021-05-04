@@ -1,10 +1,13 @@
 # rails g controller teams --no-helper --no-assets
 
 class TeamsController < ApplicationController
-    before_action :find_team, only:[:show,:edit, :update, :destroy]
+    before_action :find_team, only:[:show,:edit, :update]
+    # before_action :find_datas, only:[:index]
+
     def new
         @team = Team.new
     end
+
     def create
         @team=Team.new team_params
         
@@ -21,8 +24,10 @@ class TeamsController < ApplicationController
     end
 
     def index
-        @teams = Team.all.order(created_at: :desc)
+        team_data = get_teams
+        @teams = team_data["teams"]
         @team_count = @teams.count
+        
     end
 
     def show
@@ -38,15 +43,20 @@ class TeamsController < ApplicationController
         end
     end
 
-    def destroy   
+    def destroy 
         @team.destroy
         redirect_to teams_path
     end
 
 
     private
-    def find_team
-        @team=Team.find params[:id]
+
+    # def find_team
+    #     @team=Team.find params[:id]
+    # end
+
+    def find_datas
+        get_teams
     end
 
     def team_params
