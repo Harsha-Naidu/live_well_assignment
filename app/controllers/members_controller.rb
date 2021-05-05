@@ -1,8 +1,8 @@
 # rails g controller members --no-helper --no-assets
 
 class MembersController < ApplicationController
-    before_action :find_member, only:[:show,:edit, :update]
-  
+    before_action :find_member, only:[:show,:edit, :update,:destroy]
+    before_action :get_members, only: [:index]
 
     def new
         @member = Member.new
@@ -23,8 +23,8 @@ class MembersController < ApplicationController
     end
 
     def index
-       @members = get_members
-       @member_count = @members.count
+        @members = Member.all
+        @member_count = @members.count
     end
 
     def show
@@ -44,19 +44,26 @@ class MembersController < ApplicationController
         @member.destroy
         redirect_to members_path
     end
+   
+    def delete
+        members = Member.all
+        members.destroy_all
+        get_members
+        redirect_to members_path
+    end
 
     private
 
-    def get_members
-        @data =[] 
-        heroes = get_teams
-        heroes["teams"].each do |team|
-            team["members"].map do |hero|
-            @data.push(hero)
-            end
-        end
-        return @data
-    end
+    # def get_members
+    #     @data =[] 
+    #     heroes = get_teams
+    #     heroes["teams"].each do |team|
+    #         team["members"].map do |hero|
+    #         @data.push(hero)
+    #         end
+    #     end
+    #     return @data
+    # end
 
     def find_member
         @member=Member.find params[:id]

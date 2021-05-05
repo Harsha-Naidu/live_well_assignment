@@ -1,20 +1,8 @@
+
+<%= render 'navbar2'%>
+
 <div class="container">
 
-<div class='container-fluid'>
-    <div style="float:left">
-        <nav class="navbar navbar-expand navbar-black justify-content-between">
-            <ul class="navbar-nav ml-auto">
-          
-                <li class="nav-item active mr-4">
-                   <h4> <%= link_to 'Home', root_path  %></h4>
-                </li>
-                >
-                <li class="nav-item mr-3">
-                   <h4><%= link_to 'Teams', teams_path %><h4>
-                </li>
-            </ul>
-    </div>
-</div>
 <div class="container">
     <div style="float:left">
        <h1><%= @team_count %> Teams</h1>
@@ -40,11 +28,11 @@
     <% @teams.each do |team|%>  
         <tbody>
         <tr> 
-            <td><%= link_to(team["name"])%></td>
-            <td><%= team["homeTown"] %></td>
-            <td><%= team["formed"] %></td>
-            <td><%= team["active"] %></td>
-            <td><%= team["members"].length %></td>
+            <td><%= link_to(team.name, team_path(team.id)) %></td>
+            <td><%= team.home_town %></td>
+            <td><%= team.formed%></td>
+            <td><%= team.active%></td>
+            <td><%= @count %></td>
         </tr>
         </tbody>
     <% end %>

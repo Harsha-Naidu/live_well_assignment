@@ -1,4 +1,6 @@
-<%= form_for [@team,@member], local: true do |f| %>
+
+
+<%= form_with model:@member, local: true do |f| %>
 
 
     <% if @member.errors.present? %>

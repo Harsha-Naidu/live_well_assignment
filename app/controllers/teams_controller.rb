@@ -1,8 +1,8 @@
 # rails g controller teams --no-helper --no-assets
 
 class TeamsController < ApplicationController
-    before_action :find_team, only:[:show,:edit, :update]
-    # before_action :find_datas, only:[:index]
+    before_action :find_team, only:[:show,:edit, :update,:destroy]
+    before_action :get_teams, only: [:index]
 
     def new
         @team = Team.new
@@ -24,10 +24,16 @@ class TeamsController < ApplicationController
     end
 
     def index
-        team_data = get_teams
-        @teams = team_data["teams"]
-        @team_count = @teams.count
+        # team_data = get_teams
+        # @teams = team_data["teams"]
+        # @team_count = @teams.count
+        tm_count = team_member_count
+        tm_count["teams"].each do |team|
+            @count = team["members"].count;
+        end
         
+        @teams = Team.all
+        @team_count = @teams.count
     end
 
     def show
@@ -48,21 +54,21 @@ class TeamsController < ApplicationController
         redirect_to teams_path
     end
 
+    def delete
+        teams = Team.all
+        teams.destroy_all
+        get_teams
+        redirect_to teams_path
+    end
 
     private
 
-    # def find_team
-    #     @team=Team.find params[:id]
-    # end
-
-    def find_datas
-        get_teams
+    def find_team
+        @team=Team.find params[:id]
     end
 
     def team_params
         params.require(:team).permit(:name, :home_town, :formed,:active)
     end
    
-
-
 end

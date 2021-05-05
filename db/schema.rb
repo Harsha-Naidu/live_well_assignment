@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_01_032340) do
+ActiveRecord::Schema.define(version: 2021_05_05_045854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mappings", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "member_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_mappings_on_member_id"
+    t.index ["team_id"], name: "index_mappings_on_team_id"
+  end
 
   create_table "members", force: :cascade do |t|
     t.string "name"
@@ -31,9 +40,8 @@ ActiveRecord::Schema.define(version: 2021_05_01_032340) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "member_id", null: false
-    t.index ["member_id"], name: "index_teams_on_member_id"
   end
 
-  add_foreign_key "teams", "members"
+  add_foreign_key "mappings", "members"
+  add_foreign_key "mappings", "teams"
 end

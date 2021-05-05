@@ -1,20 +1,6 @@
+<%= render 'navbar'%>
 <div class="container">
 
-<div class='container-fluid'>
-    <div style="float:left">
-        <nav class="navbar navbar-expand navbar-black justify-content-between">
-            <ul class="navbar-nav ml-auto">
-          
-                <li class="nav-item active mr-4">
-                   <h4> <%= link_to 'Home', root_path  %></h4>
-                </li>
-                >
-                <li class="nav-item mr-3">
-                   <h4><%= link_to 'Teams', teams_path %><h4>
-                </li>
-            </ul>
-    </div>
-</div>
 <div class="container">
     <div style="float:left">
        <h1><%= @member_count %> Heroes</h1>
@@ -22,7 +8,7 @@
     <div style="float:right">
         <%= link_to("New",new_member_path, class:"btn btn-success")%>
         <span>
-            <%= link_to("Reset to Default","/teams",method: :delete,data:{confirm: "Are you sure you want to reset to default ?"}, class:"btn btn-danger") %>
+            <%= link_to("Reset to Default","/members",method: :delete,data:{confirm: "Are you sure you want to reset to default ?"}, class:"btn btn-danger") %>
         </span> 
     </div>  
 </div>
@@ -40,10 +26,10 @@
     <% @members.each do |member| %> 
             <tbody>
             <tr> 
-            <td><%= link_to(member["name"])%></td>
-                <td><%= member["age"] %></td>
-                <td><%= member["secretIdentity"] %></td>
-                <td><%= member["powers"] %></td>
+            <td><%= link_to(member.name, member_path(member.id))%></td>
+                <td><%= member.age %></td>
+                <td><%= member.secret_identity %></td>
+                <td><%= member.powers %></td>
             </tr>
             </tbody>
     <% end %>
