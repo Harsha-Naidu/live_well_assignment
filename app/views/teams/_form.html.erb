@@ -16,11 +16,12 @@
         </div>
         <br/>
         <div class="form-group">
-            <%= f.text_field :formed,placeholder:" Formed eg. 2016 *" ,class:'form-control' %> 
+            <%= f.number_field :formed,placeholder:" Formed eg. 2016 *" ,class:'form-control' %> 
         </div>
         <br/>     
         <div class="form-group">
-            <%= f.text_field :active,placeholder:" Active * " ,class:'form-control' %> 
+        <b>Active</b> <%= f.radio_button :active, "true" %>Yes <%= f.radio_button :active, "false" %>No
+            
         </div>
 
 <br/>
@@ -28,3 +29,4 @@
   <%= f.submit class:"btn btn-outline-primary"%>
   
 <% end %>
+
