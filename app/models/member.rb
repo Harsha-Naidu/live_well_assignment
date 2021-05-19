@@ -6,6 +6,5 @@ class Member < ApplicationRecord
     validates :secret_identity, presence: {message: 'should be provided'}
     validates :powers, presence: true
     
-    has_many :mappings, dependent: :destroy
-    has_many :teams, through: :mappings
+    belongs_to :teams
 end

@@ -5,7 +5,8 @@ class Team < ApplicationRecord
     validates :home_town , presence: true
     validates :formed, presence: true
   
-    has_many :mappings, dependent: :destroy
-    has_many :members, through: :mappings
+    validates :active, :inclusion => { :in => [true, false] }
+
+    has_many :members
  
 end
