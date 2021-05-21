@@ -6,5 +6,5 @@ class Member < ApplicationRecord
     validates :secret_identity, presence: {message: 'should be provided'}
     validates :powers, presence: true
     
-    belongs_to :teams
+    belongs_to :team
 end
