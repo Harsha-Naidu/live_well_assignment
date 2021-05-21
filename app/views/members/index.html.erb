@@ -19,6 +19,7 @@
       <tr class="table-primary">
         <th>Name</th>
         <th>Age</th>
+        <th>Team_name</th>
         <th>Secret Identity</th>
         <th>Powers</th> 
       </tr>
@@ -28,6 +29,7 @@
             <tr> 
             <td><%= link_to(member.name, member_path(member.id))%></td>
                 <td><%= member.age %></td>
+                <td><%= member.team.name %></td>
                 <td><%= member.secret_identity %></td>
                 <td><%= member.powers %></td>
             </tr>
