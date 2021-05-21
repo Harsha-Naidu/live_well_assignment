@@ -2,7 +2,7 @@
 
 class TeamsController < ApplicationController
     before_action :find_team, only:[:show,:edit, :update,:destroy]
-    before_action :get_teams, only: [:index]
+    before_action :get_default, only: [:index]
 
     def new
         @team = Team.new

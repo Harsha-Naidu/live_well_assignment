@@ -2,7 +2,7 @@
 
 class MembersController < ApplicationController
     before_action :find_member, only:[:show,:edit, :update,:destroy]
-    before_action :get_members, only: [:index]
+    before_action :get_default, only: [:index]
 
     def new
         @member = Member.new
