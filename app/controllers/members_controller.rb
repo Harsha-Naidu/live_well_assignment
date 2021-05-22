@@ -48,22 +48,12 @@ class MembersController < ApplicationController
     def delete
         members = Member.all
         members.destroy_all
-        get_members
+        get_default
         redirect_to members_path
     end
 
     private
 
-    # def get_members
-    #     @data =[] 
-    #     heroes = get_teams
-    #     heroes["teams"].each do |team|
-    #         team["members"].map do |hero|
-    #         @data.push(hero)
-    #         end
-    #     end
-    #     return @data
-    # end
 
     def find_member
         @member=Member.find params[:id]

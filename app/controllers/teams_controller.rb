@@ -57,7 +57,7 @@ class TeamsController < ApplicationController
     def delete
         teams = Team.all
         teams.destroy_all
-        get_teams
+        get_default
         redirect_to teams_path
     end
 
