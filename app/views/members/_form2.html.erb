@@ -23,8 +23,8 @@
             <%= f.text_field :powers,placeholder:" Powers * " ,class:'form-control' %> 
         </div>
         <div class="form-group">
-            <%= f.label :team %> 
-            <%= f.select(:team, options_for_select([["Eronators",'Eronators'],["Teen Titans",'Teen Titans'],["Tyradians",'Tyradians'],["Avengers",'Avengers'],["Minutemen",'Minutemen']]), {include_blank: true}) %>
+            <%= f.label :team_id %> 
+            <%= f.collection_select(:team_id, Team.all, :id, :name) %>
         </div>
 
 <br/>
