@@ -15,9 +15,16 @@
     </div>
     
     <div class="col align-self-center">
-      <%= form_tag(members_path,method: :get) do%>
-        <%=text_field_tag(:search, params[:search]) %>
-        <%=submit_tag ("search")%>
+      <%= search_form_for @q do |f|%>
+        <%= f.label :name_cont %>
+        <%= f.search_field :name_cont %>
+
+        <%= f.label :age_eq %>
+        <%= f.search_field :age_eq %>
+
+        <%= f.label :team_name_cont %>
+        <%= f.search_field :team_name_cont %>
+        <%= f.submit %>
       <% end %>
     </div>
     
@@ -27,9 +34,9 @@
     <table class="table table-striped" cellspacing="0" width=100%>
     <thead>
       <tr class="table-primary">
-        <th>Name</th>
-        <th>Age</th>
-        <th>Team Name</th>
+        <th><%=sort_link(@q, :name)%></th>
+        <th><%=sort_link(@q, :age)%></th>
+        <th><%=sort_link(@q, :team_name)%></th>
         <th>Secret Identity</th>
         <th>Powers</th> 
       </tr>
