@@ -31,6 +31,7 @@ gem "faker" , :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mas
 gem 'cowsay', '~> 0.3.0'
 gem 'excon'
 gem 'simple_form'
+gem 'ransack'                                                           
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -23,7 +23,7 @@ class MembersController < ApplicationController
     end
 
     def index
-        @members = Member.all
+        @members = Member.search(params[:search])
         @member_count = @members.count
     end
 
