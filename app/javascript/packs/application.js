@@ -9,3 +9,21 @@ import "channels"
 
 Rails.start()
 ActiveStorage.start()
+
+window.jQuery=$;
+window.$=$;
+
+import "bootstrap";
+import '../stylesheets/application'
+
+//= require jquery3
+
+//= require popper
+
+//= require bootstrap
+
+//= require rails-ujs
+
+//= require turbolinks
+
+//= require_tree .

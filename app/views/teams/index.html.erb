@@ -1,0 +1,40 @@
+
+<%= render 'navbar2'%>
+
+<div class="container">
+
+<div class="container">
+    <div style="float:left">
+       <h1><%= @team_count %> Teams</h1>
+    </div>
+    <div style="float:right">
+        <%= link_to("New",new_team_path, class:"btn btn-success")%>
+        <span>
+           <%= link_to("Reset to Default","/teams",method: :delete,data:{confirm: "Are you sure you want to reset to default ?"}, class:"btn btn-danger") %>
+        </span> 
+    </div>  
+</div>
+<br/>
+    <table class="table table-striped" cellspacing="0" width=100%>
+    <thead>
+      <tr class="table-primary">
+        <th>Name</th>
+        <th>Hometown</th>
+        <th>Formed</th>
+        <th>Active</th>
+        <th>Members</th>   
+      </tr>
+    </thead>
+    <% @teams.each do |team|%>  
+        <tbody>
+        <tr> 
+            <td><%= link_to(team.name, team_path(team.id)) %></td>
+            <td><%= team.home_town %></td>
+            <td><%= team.formed%></td>
+            <td><%= team.active%></td>
+            <td><%= @count %></td>
+        </tr>
+        </tbody>
+    <% end %>
+  </table>
+</div>

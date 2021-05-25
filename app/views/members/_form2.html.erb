@@ -1,0 +1,34 @@
+
+
+<%= form_with model:@member, local: true do |f| %>
+
+
+    <% if @member.errors.present? %>
+        <%= @member.errors.full_messages.join(', ')%>
+    <% end %>
+
+        <div class="form-group">
+            <%= f.text_field :name,placeholder:"Name *",class:'form-control' %> 
+        </div>
+        <br/>
+        <div class="form-group">
+            <%= f.text_field :age,placeholder:"Age *" ,class:'form-control' %> 
+        </div>
+        <br/>
+        <div class="form-group">
+            <%= f.text_field :secret_identity,placeholder:"Secret Identity *" ,class:'form-control' %> 
+        </div>
+        <br/>     
+        <div class="form-group">
+            <%= f.text_field :powers,placeholder:" Powers * " ,class:'form-control' %> 
+        </div>
+        <div class="form-group">
+            <%= f.label :team_id %> 
+            <%= f.collection_select(:team_id, Team.all, :id, :name) %>
+        </div>
+
+<br/>
+  
+  <%= f.submit class:"btn btn-outline-primary"%>
+  
+<% end %>
