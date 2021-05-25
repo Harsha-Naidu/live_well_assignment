@@ -1,32 +1,11 @@
 
 
-<%= form_with model:@team, local: true do |f| %>
 
-
-    <% if @team.errors.present? %>
-        <%= @team.errors.full_messages.join(', ')%>
-    <% end %>
-
-        <div class="form-group">
-            <%= f.text_field :name,placeholder:"Name *",class:'form-control' %> 
-        </div>
-        <br/>
-        <div class="form-group">
-            <%= f.text_field :home_town,placeholder:"Home Town *" ,class:'form-control' %> 
-        </div>
-        <br/>
-        <div class="form-group">
-            <%= f.number_field :formed,placeholder:" Formed eg. 2016 *" ,class:'form-control' %> 
-        </div>
-        <br/>     
-        <div class="form-group">
-        <b>Active</b> <%= f.radio_button :active, "true" %>Yes <%= f.radio_button :active, "false" %>No
-            
-        </div>
-
-<br/>
-  
-  <%= f.submit class:"btn btn-outline-primary"%>
-  
+<%= simple_form_for @team do |f| %>
+  <%= f.input :name %>
+  <%= f.input :home_town %>
+  <%= f.input :formed %>
+  <%= f.label :active %>
+  <%= f.collection_radio_buttons :active, [[true, 'Yes'] ,[false, 'No']], :first, :last ,:style =>"display:inline",item_wrapper_tag: :div %>
+  <%= f.button :submit, class:"btn btn-outline-primary" %>
 <% end %>
-
