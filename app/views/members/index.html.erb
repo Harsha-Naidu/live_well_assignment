@@ -2,24 +2,41 @@
 <div class="container">
 
 <div class="container">
-    <div style="float:left">
+  <div class="row">
+    <div class="col">
        <h1><%= @member_count %> Heroes</h1>
     </div>
-    <div style="float:right">
+    <div class="col-2">
         <%= link_to("New",new_member_path, class:"btn btn-success")%>
         <span>
             <%= link_to("Reset to Default","/members",method: :delete,data:{confirm: "Are you sure you want to reset to default ?"}, class:"btn btn-danger") %>
         </span> 
     </div>  
+    </div>
+    
+    <div class="col align-self-center">
+      <%= search_form_for @q do |f|%>
+        <%= f.label :name_cont %>
+        <%= f.search_field :name_cont %>
+
+        <%= f.label :age_eq %>
+        <%= f.search_field :age_eq %>
+
+        <%= f.label :team_name_cont %>
+        <%= f.search_field :team_name_cont %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+    
 </div>
 <br/>
 
     <table class="table table-striped" cellspacing="0" width=100%>
     <thead>
       <tr class="table-primary">
-        <th>Name</th>
-        <th>Age</th>
-        <th>Team Name</th>
+        <th><%=sort_link(@q, :name)%></th>
+        <th><%=sort_link(@q, :age)%></th>
+        <th><%=sort_link(@q, :team_name)%></th>
         <th>Secret Identity</th>
         <th>Powers</th> 
       </tr>

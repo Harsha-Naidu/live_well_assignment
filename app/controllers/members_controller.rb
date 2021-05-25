@@ -23,7 +23,8 @@ class MembersController < ApplicationController
     end
 
     def index
-        @members = Member.all
+        @q = Member.ransack(params[:q])
+        @members = @q.result
         @member_count = @members.count
     end
 
